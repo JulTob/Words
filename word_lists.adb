@@ -27,9 +27,7 @@ package body Word_Lists is
 	procedure Delete_Word (List: in out Word_List_Type;
 			Word: in ASU.Unbounded_String) is
 		Aux1: Word_List_Type;
-		Aux2: Word_List_Type;
 	begin --Delete_Word
-
 		Aux1:=List;  --Dos punteros auxiliares
 		if List=null then		--Lista vacía
 			T_IO.Put_Line(" No hay palabras.");
