@@ -74,35 +74,4 @@ package Control_Words is
 					end loop;
 				end Activate_Control_Mode;
 
-	procedure 
-		Activate_Control_Mode(
-			Word_List: in out Word_Lists.Word_List_Type) is		
-			stop: boolean:= false;
-			selector: integer := 0;
-			begin
-				while not stop loop 
-					lounch_control_mode(stop, selector);
-					case selector is
-						when 1 =>
-							T_IO.Put_Line("Selection: Add");
-							T_IO.Put_Line("Write the word");
-							Add_Word (List, Word);
-						when 2 =>
-							T_IO.Put_Line("Selection: Delete");
-							T_IO.Put_Line("Write the word");
-						when 3 =>
-							T_IO.Put_Line("Selection: Search");
-							T_IO.Put_Line("Write the word");
-						when 4 =>
-							T_IO.Put_Line("Selection: Show all");
-						when 5 =>
-							T_IO.Put_Line("Selection: Quit");
-							T_IO.Put_Line("Bye.");
-							stop := true;
-						when others =>
-							Ada.Text_IO.Put_Line("Not a valid statement. Choose a diferent case");
-						end case;
-					end loop;
-				end Activate_Control_Mode;
-
 end Control_Words;
