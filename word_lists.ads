@@ -11,24 +11,33 @@ package Word_Lists is
 		Word: ASU.Unbounded_String;
 		Count: Natural := 0;
 		Next: Word_List_Type;
-	end record;
+		end record;
 
 	Word_List_Error: exception;
 
-procedure Add_Word (List: in out Word_List_Type;
-			Word: in ASU.Unbounded_String);
+	procedure 
+		Add_Word (
+			List: in out	Word_List_Type;
+			Word: in    	ASU.Unbounded_String);
 
-procedure Delete_Word (List: in out Word_List_Type;
-			Word: in ASU.Unbounded_String);
+	procedure 
+		Delete_Word (
+			List: in out	Word_List_Type;
+			Word: in    	ASU.Unbounded_String);
 
-procedure Search_Word (List: in Word_List_Type;
-			Word: in ASU.Unbounded_String;
-			Count: out Natural);
+	procedure 
+		Search_Word (
+			List: in  	Word_List_Type;
+			Word: in  	ASU.Unbounded_String;
+			Count: out	Natural);
 
-procedure Max_Word (List: in Word_List_Type;
-		Word: out ASU.Unbounded_String;
-		Count: out Natural);
+	procedure 
+		Max_Word (
+			List:  in 	Word_List_Type;
+			Word:  out 	ASU.Unbounded_String;
+			Count: out 	Natural);
 
-procedure Print_All (List: in Word_List_Type);
+	procedure 
+		Print_All (List: in Word_List_Type);
 
 end Word_Lists;
