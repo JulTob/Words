@@ -13,7 +13,7 @@ package Control_Words is
 	package Int_IO is new Ada.Text_IO.Integer_IO(Integer);
 
 	procedure 
-		lounch_control_mode(
+		Lounch_Control_Mode(
 			selector: in out integer);
 
 	procedure 
