@@ -46,9 +46,9 @@ package body Split is
 		Split_Line_In_Words(
 			Frase: 	in out UString.Unbounded_String;
 			List: 	in out WL.Word_List_Type) is 
-	    Finish_Line: Boolean := False;
-	    Word: UString.Unbounded_String;
-	    Position: Integer;
+	    	Finish_Line: Boolean := False;
+	    	Word: UString.Unbounded_String;
+	    	Position: Integer;
 			begin --Split_Line_In_Words
     		Frase:= Clean_Word(UString.To_String(Frase));
 				while 	not Finish_Line loop 
