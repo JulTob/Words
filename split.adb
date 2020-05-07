@@ -46,29 +46,29 @@ package body Split is
 		Split_Line_In_Words(
 			Frase: 	in out UString.Unbounded_String;
 			List: 	in out WL.Word_List_Type) is 
-	    	Finish_Line: Boolean := False;
-	    	Word: UString.Unbounded_String;
-	    	Position: Integer;
+			Finish_Line: Boolean := False;
+			Word: UString.Unbounded_String;
+			Position: Integer;
 			begin --Split_Line_In_Words
-    		Frase:= Clean_Word(UString.To_String(Frase));
-				while 	not Finish_Line loop 
-					Position:= UString.Index(Frase," ");
-					if Position = 0 then
-						Finish_Line:= True;
-					elsif Position = 1 then
-						Frase:= UString.Tail(
-							Frase,
-							UString.Length(Frase)-Position);
-					else 
-						Word:= UString.Head(
-							Frase,
-							Position-1);
-						WL.Add_Word(List,Word);
-						Frase:= UString.Tail(
-							Frase,
-							UString.Length(Frase)-Position);
-						end if;
-					end loop;
+				Frase:= Clean_Word(UString.To_String(Frase));
+					while 	not Finish_Line loop 
+						Position:= UString.Index(Frase," ");
+						if Position = 0 then
+							Finish_Line:= True;
+						elsif Position = 1 then
+							Frase:= UString.Tail(
+								Frase,
+								UString.Length(Frase)-Position);
+						else 
+							Word:= UString.Head(
+								Frase,
+								Position-1);
+							WL.Add_Word(List,Word);
+							Frase:= UString.Tail(
+								Frase,
+								UString.Length(Frase)-Position);
+							end if;
+						end loop;
 				end Split_Line_In_Words;
 
 	procedure 
