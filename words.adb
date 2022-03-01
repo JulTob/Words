@@ -9,10 +9,11 @@
 
 --Muestra la palabra con más ocurrencia al final
 
---By Julio Toboso
+---- By Julio Toboso
+
+
 
 --Librerias
-
 with Ada.Text_IO;
 with Ada.Command_Line;
 with Ada.Strings.Unbounded;
