@@ -69,6 +69,8 @@ procedure Words is
 			when others =>
 				raise Wrong_N_Command;
 				end case;
+			WC.Dispose_List(List);
+
 	exception --Words
 		when Wrong_Command =>
 			T_IO.Put_Line("Paramaters out of correct use.");
