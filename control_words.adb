@@ -7,9 +7,11 @@ with Word_Lists;
 
 package Control_Words is
 
+        ---- Renames ----
 	package T_IO 	renames Ada.Text_IO;
 	package ACL 	renames Ada.Command_Line;
 	package Int_IO 	is new Ada.Text_IO.Integer_IO(Integer);
+        ------------------
 
 	procedure 
 		Lounch_Control_Mode( 
