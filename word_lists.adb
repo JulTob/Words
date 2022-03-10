@@ -30,18 +30,50 @@ package body Word_Lists is
 		Delete_Word (
 			List: in out Word_List_Type;
 			Word: in ASU.Unbounded_String) is
-			Aux1: Word_List_Type;
+			Aux1: Word_List_Type;   -- Puntero auxiliares
 			begin --Delete_Word
-				Aux1 := List;  --Dos punteros auxiliares
+				Aux1 := List;
 				if List = null then		--Lista vacía
-					T_IO.Put_Line(" No hay palabras.");
+					T_IO.Put_Line(" No hay mas palabras.");
 				elsif Aux1.word = Word then	--Word en el primer nodo?
-					List := List.Next;		--Adelanta List
-					Free(Aux1);				--Libera el nodo
+					List := List.Next;	--Adelanta List
+					Free(Aux1);		--Libera el nodo
 				else
-					Delete_Word(List.Next,Word);							--Con todo esto
+					Delete_Word(List.Next,Word);	--Con todo esto
 					end if;
 				end Delete_Word;
+
+	--Borra el nodo de la lista
+	procedure 
+	Delete_Word2 (
+		List: in out Word_List_Type;
+		Word: in ASU.Unbounded_String) is
+		Aux1: Word_List_Type := List;   -- Puntero auxiliares
+		Aux2: Word_List_Type := List;   -- Puntero auxiliares
+		begin --Delete_Word
+			if List = null then		--Lista vacía
+				T_IO.Put_Line(" No hay mas palabras.");
+			elsif Aux1.word = Word then	--Word en el primer nodo?
+				List := List.Next;	--Adelanta List
+				Free(Aux1);		--Libera el nodo
+			else
+				Aux2:=Aux1.Next;
+				while Aux2/=null loop
+					if Aux2.Word=Word then
+						Aux1.Next:=Aux2.Next;
+						Free(Aux2);
+						Aux2:=Aux1.Next;
+						end if;
+					Aux1:=Aux1.Next;
+					if  Aux2/=null then
+						Aux2:=Aux2.Next;
+						end if;
+				
+					end loop;
+				end if;
+			end Delete_Word2;
+
+
 
 	--Buscar el nodo en la lista
 	procedure 
@@ -58,7 +90,7 @@ package body Word_Lists is
 						Count:= Aux.Count;
 						end if;
 					Aux:= Aux.Next;
-					exit when		Aux = null;
+					exit when	Aux = null;
 					end loop;
 				end Search_Word;
 
@@ -132,6 +164,42 @@ package body Word_Lists is
 					Add_Word(Aux_List.Next,Word);
 					end if;
 				end Add_Word;
+
+
+
+
+	procedure
+		Add_Word2 (
+			List: in out Word_List_Type;
+			Word: in ASU.Unbounded_String) is
+			Aux_List: Word_List_Type;
+			finish: boolean:= False;
+			auxB: 	boolean:= False;
+			begin
+				Aux_List:=List;
+				--si no existe la crea
+				if Aux_List=null then
+					New_Node(List,Word);
+				else
+				-- Busca si la palabra concuerda (si es así ++Cntr y termina)
+					loop  
+						if Aux_List.Word=Word then
+							Aux_List.Count:=Aux_List.Count+1;
+							finish:=true;
+						-- Mira si el siguiente va a tierra (si va, nuevo nodo y termina)
+						elsif Aux_List.Next=null then
+							New_Node(Aux_List.Next,Word);
+							finish:=True;
+							end if;
+						-- Si nada de lo anterior, siguiente nodo.
+						Aux_List:=Aux_List.Next;
+					    	exit when finish;
+						end loop;
+					end if;
+		
+				-- 	Sort(List);
+
+			end Add_Word2;
 
 
 	procedure 
