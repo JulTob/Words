@@ -18,16 +18,16 @@ package body Words_Command is
 		Free is new Ada.Unchecked_Deallocation(Cell, Word_List_Type);
 
 	procedure 
-		Dispose_List (Word_List: in out Word_List_Type) is
+	Dispose_List (	Word_List: in out Word_List_Type) is
 			Trasher: Word_List_Type;
-    	begin --Dispose_List
-				loop
-					exit when Word_List = null;
-					Trasher := Word_List.Next;
-					Word_List := Word_List.Next;
-					Free(Trasher);
-					end loop;
-				end Dispose_List;
+    		begin --Dispose_List
+			loop
+				exit when Word_List = null;
+				Trasher := Word_List;
+				Word_List := Word_List.Next;
+				Free(Trasher);
+				end loop;
+			end Dispose_List;
 
 	--Lectura de los comandos
 	procedure 
